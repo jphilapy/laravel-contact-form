@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact.form');
-});
-
-
-Route::post('/contact', function (Request $request) {
-    dd($request);
-});
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create']);
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store']);
